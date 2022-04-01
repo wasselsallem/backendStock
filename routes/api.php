@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('foo', function () {
+    return 'Hello World';
+});
+Route::get('/hatem', [ProductController::class, 'getAll']);
+Route::post('/hatem', [ProductController::class, 'store']);
+Route::put('/h/{id}', [ProductController::class, 'update']);
+Route::delete('/d/{id}', [ProductController::class, 'delete']);
